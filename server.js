@@ -4,6 +4,8 @@ const db=require('./db');
 const bodyParser=require('body-parser');
 app.use(bodyParser.json())
 
+require('dotenv').config();
+const PORT=process.env.PORT;
 
 app.get('/',(req,res)=>{
     res.send('Welcome to My Intelligence Agency');
@@ -12,6 +14,6 @@ app.get('/',(req,res)=>{
 const agentRoute=require('./routes/agentRoute');
 app.use('/agents',agentRoute);
 
-app.listen(4720,()=>{
-    console.log('Listening on port:4720');
+app.listen(PORT,()=>{
+    console.log(`Listening on port:${PORT}`);
 });
